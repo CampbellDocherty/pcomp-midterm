@@ -1,0 +1,6 @@
+{
+  "short_name": "apws",
+  "name": "apws",
+  "start_url": "/",
+  "display": "standalone"
+}

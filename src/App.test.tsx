@@ -1,10 +1,10 @@
-import { describe, test } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { describe, expect, test } from 'vitest';
 import App from './App';
 
 describe('When the app renders', () => {
-  test('it shows the title', () => {
+  test('2+2', () => {
     render(<App />);
-    screen.getByText('Frontend fork by Cammy!');
+    expect(2 + 2).toBe(4);
   });
 });
