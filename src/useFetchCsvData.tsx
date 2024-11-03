@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export const useFetchCsvData = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [shouldRefill, setShouldRefill] = useState<boolean | null>(null);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    fetchCSVData(); // fetch on first load
     const interval = setInterval(() => {
       fetchCSVData();
     }, 10000);
@@ -24,8 +26,9 @@ export const useFetchCsvData = () => {
       .catch((error) => {
         setIsError(true);
         console.error('Error fetching CSV data:', error);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
-  return { shouldRefill, isError };
+  return { shouldRefill, isError, isLoading };
 };

@@ -1,7 +1,16 @@
 import { useFetchCsvData } from './useFetchCsvData';
 
 const App = () => {
-  const { isError, shouldRefill } = useFetchCsvData();
+  const { isError, shouldRefill, isLoading } = useFetchCsvData();
+
+  if (isLoading) {
+    return (
+      <div className="container">
+        <p>Loading</p>
+        <p className="emoji">⏳</p>
+      </div>
+    );
+  }
 
   if (isError) {
     return (
